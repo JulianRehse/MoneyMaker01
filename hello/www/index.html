@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="de" xmlns="http://www.w3.org/1999/html">
+  <head>
+	  	<title>MoneyMaker</title>
+	  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     
+
+	  	
+	  	<link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
+        <script src="jquery/jquery-1.8.0.min.js"></script>
+		<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+       
+       
+		<script src="js/Alles.js"></script>
+		<script src="js/Ausführen.js"></script>
+
+  </head>
+	
+	
+    <body>
+	
+    <div data-role="page" id="p1"> 
+		<div data-role="header" class="Hintergrund">
+		<div class="MoneyMaker">MoneyMaker</div>
+		<div class="Liste">
+			<button id="bol1">
+				<img src="img/bill.png" id="billpng"/>
+				<a href="#p2" data-role="button" data-transition="flip" id="ListeLink">
+					Liste	
+				</a>
+			</button>
+		
+		
+        </div><!-- /header --> 
+
+		
+		<div data-role="content" class="Hintergrund"> 
+			<div id="Budget" class="Allgemein">Budget:<span id="GesamtBudget">0</span></div>
+			<div id="Einkommen" class="Allgemein">Einkommen:<span id="GesamtEinkommen">0</span></div>
+			<div id="Ausgaben" class="Allgemein">Ausgaben:<span id="GesamtAusgaben">0</span></div>
+			
+			<div id="Buttons">
+			  
+		<a href="#popupAusgaben" id="AusgabenHinzufuegen" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-a" data-transition="pop">Ausgaben hinzufügen</a>
+				
+				<div data-role="popup" id="popupAusgaben" data-theme="b">
+                    <form>
+                        <div style="padding:10px 20px;">
+                            <h3>Ausgaben hinzufügen</h3>
+                            
+							<label for="AusgabeName" class="ui-hidden-accessible">Ausgabe:</label>
+                            <input type="text" name="user" id="AusgabeName" placeholder="Ausgabe" data-theme="a">
+
+                            <label for="AusgabePreis" class="ui-hidden-accessible">Preis:</label>
+                            <input type="number" name="pass" id="AusgabePreis" placeholder="Preis" data-theme="a">
+							<br>
+                                        
+							<label for="AusgabeDatum" class="ui-hidden-accessible">Datum:</label>
+                            <input type="date" id="AusgabeDatum" placeholder="Waehle einen Datum aus">
+							<br>
+
+ 							<input type="hidden" id="key" />
+                            <a href="#p1" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-a"id="btnAddA">OK</a>
+
+                            <button class="ui-btn ui-shadow ui-corner-all ui-btn-a" >Abbruch</button>
+
+      							   <script type="text/javascript">
+							
+						
+
+							
+
+								const expenseButton = document.getElementById('btnAddA');
+const ausführenAusgaben = new Ausführen();
+expenseButton.addEventListener('click', function (event) {
+	event.preventDefault();
+	ausführenAusgaben.berechneAusg();
+})
+								
+
+
+							
+							</script>
+							<br>
+
+                        </div>
+                    </form>
+				
+                </div>
+
+			  
+		<a href="#popupEinkommen" id="EinkommenHinzufuegen" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-plus ui-btn-icon-left ui-btn-a" data-transition="pop">Einkommen hinzufügen</a>
+		
+				<div data-role="popup" id="popupEinkommen" data-theme="a">
+                    <form>
+                        <div style="padding:10px 20px;">
+                            <h3>Einkommen hinzufügen</h3>
+                            
+							<label>Einkommen:</label>
+                            <input type="text" name="user" id="EinkommenName" placeholder="Ausgabe" data-theme="a">
+
+                            <label>Preis:</label>
+                            <input type="number" name="pass" id="EinkommenPreis" placeholder="Preis" data-theme="a">
+							<br>
+                                        
+							<label>Datum:</label>
+                            <input type="date" id="EinkommenDatum" placeholder="Waehle einen Datum aus">
+							<br>
+
+
+							<a href="#p1" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-a"id="btnAddE">OK</a>
+
+                            <button class="ui-btn ui-shadow ui-corner-all ui-btn-a" >Abbruch</button>
+
+      							   <script type="text/javascript">
+							
+								 /*const expenseAdd = $("#btnAdd");
+                                expenseAdd.unbind('click');
+                                expenseAdd.click(function () {
+                                    const all = new Alles();
+                                    all.leseAusgaben();
+								});*/
+
+							
+
+								const incomeButton = document.getElementById('btnAddE');
+const ausführenEinkommen = new Ausführen();
+incomeButton.addEventListener('click', function (event) {
+	event.preventDefault();
+	ausführenEinkommen.berechneEink();
+})
+								
+
+
+							
+							</script>
+							<br>
+
+                        </div>
+                    </form>
+                </div>
+			</div>
+			</div>
+			</div><!-- /content --> 
+			
+
+		
+		
+		<div data-role="footer" class="Hintergrund"> 
+		<h4>MoneyManker</h4> 
+		</div>
+		
+		
+	</div>
+<!-- /page -->
+		
+		
+
+<div data-role="page" id="p2"> 
+<div data-role="header"> 
+<div class="MoneyMaker">MoneyMaker</div>
+		<div class="Liste">
+			<button id="bol2">
+			<a href="#p1" data-role="button" data-transition="slide" id="HomeLink">
+					<img src="img/home-black.svg"/>	
+				Home
+				</a>
+			</button>
+</div><!-- /header --> 
+	
+	
+<div data-role="content"> 
+	
+            <div id="list">
+        
+            </div>
+	
+	
+<div data-role="footer" class="ueberschrift"> 
+<h4>MoneyMaker</h4> </div>
+<!-- /footer --> </div>
+<!-- /page --> 
+		</div>
+
+    </body>
+</html>
